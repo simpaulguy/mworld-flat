@@ -1,2 +1,3 @@
-mworld-HTML5-jQuery
+mworld
 ===================
+mworld written on HTML5 and jQuery/jQuerymobile ready for phonegap build

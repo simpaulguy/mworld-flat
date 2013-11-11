@@ -1,0 +1,127 @@
+<!-- i-C-a -->
+<div data-role="page" id="invisibleworld">
+  <script src="js/slidebarwos.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnwos"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnwos"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnwos"></div></div>
+  <div class="infobtnholder"><div class="infobtnwos"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnwos"></div></div>
+  <div class="menubtnholder"><div class="menubtnwos"></div></div>
+  
+  <div class="navtitleholderbh" style="padding-top:14px;"><h1>Invisible World</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navbh-content">
+        <p>If you look closely at your fingertips you'll see tiny swirling lines.  These are your fingerprints.  Are there even smaller patterns hidden in your fingertips, or in the other things around you?</p>
+        <p>No matter how hard you try, you can't see really tiny things that are much smaller than your fingerprint lines.  Just because you can't see these tiny things, it doesn't mean they don't exist.  Many things are too tiny to see.  They're part of the invisible world.</p>
+        <p>Just as a house can be made of bricks, our bodies and everything else are made up of tiny, invisible bricks called 'atoms'. How can we see them, when our eyes are not strong enough to see them?  Are there other things, besides atoms, that are invisible to us?  Welcome to the invisible world!</p>
+      </div>
+        
+      <div class="navbtn1">
+        <!--<p><a href="sub-space-bh-whatisbh.html" data-transition="slide"><img src="css/images/5-8/Space/Black_Holes/whatbhbtn.png"></a></p>-->
+        <p><a href="sub-wonderscience-invisibleworld-whatiseverything.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/What_Is_Everything_Made_Of.png"></a></p>
+      </div>
+      <div class="navbtn2">
+        <p><a href="sub-wonderscience-invisibleworld-zoomingin.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/Zooming_In.png"></a></p>
+      </div>
+      <div class="navbtn3">
+        <p><a href="sub-wonderscience-invisibleworld-whatelse.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/What_Else_Is_Out_There.png"></a></p>
+      </div>
+      <div class="navbtn4">
+        <p><a href="sub-wonderscience-invisibleworld-howstrange.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/How_Strange_Can_It_Get.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Wonders_of_Science/bottomhomewos.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <div class="micbtnholder"><div class="micbtnwos" id="playstopbh"></div></div>
+    <div class="bwos"><div class="rwwos" id="bhaudiobbtn"></div></div>
+    <div class="plwos"><div class="plpswos" id="bhaudioplbtn"></div></div>
+    <div class="fwos"><div class="fwwos" id="bhaudiofbtn"></div></div>
+    <div id="actualaudio-bh" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    (function() {
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-bh').html('<audio id="bhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="http://back.uvmate.com/sites/default/files/subjectsaudio/RevisedIntro.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#blackholes").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space.html", {transition: "slide", reverse: true });
+      bgsoundbh.pause();
+      bgsoundbh.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#playstopbh").on('tap', function() {
+      if(!playing) {
+        bhaudio.play();
+        $('.micbtnwos').css('background-position-x', '-81px');
+        playing = true;
+      } else {
+        bhaudio.pause(); bhaudio.currentTime = 0;
+        $('.micbtnwos').css('background-position-x', '0px');
+        playing = false;
+      }
+    });
+    
+    $("#bhaudioplbtn").on('tap', function() {
+      if(!playing) {
+        bhaudio.play();
+      } else {
+        bhaudio.pause();
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#bhaudiofbtn").on('tap', function() {
+      var ctime = bhaudio.currentTime;
+      bhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#bhaudiobbtn").on('tap', function() {
+      var ctime = bhaudio.currentTime;
+      bhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#bhaudiopsbtn").on('tap', function() {
+      bhaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navbtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navbtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navbtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->
